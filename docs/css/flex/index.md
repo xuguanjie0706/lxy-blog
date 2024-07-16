@@ -104,6 +104,7 @@ justify-content属性定义了项目在主轴上的对齐方式。
 
 `align-content`属性设置了多根轴线的对齐方式.数据与`align-items`类似。该属性一定要配合`flex-wrap:wrap`使用，优先级高于`align-items`。
 
+值得注意的是后面的cell交叉轴高度大于前的cell时会引起前面的cell出现白边
 ```
 .container{
     align-items: flex-start |flex-end | center | baseline| stretch

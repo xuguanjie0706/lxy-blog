@@ -26,3 +26,6 @@ cache
 
 packages/lxy-s2-view
 packages/xl-element
+packages/lxy-l7-view
+packages/echarts-view
+packages/css-app

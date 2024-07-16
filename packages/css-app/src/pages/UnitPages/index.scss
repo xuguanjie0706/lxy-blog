@@ -1,0 +1,33 @@
+.box{
+    width: 25%;
+    word-wrap: break-word;
+    border-left: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    flex-basis: 25%;
+    padding: 5px;
+}
+.box-room{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.box:nth-child(2n+1){
+    // flex-basis: 24%;
+    background-color: rgb(86, 86, 245);
+}
+
+.box:nth-child(4n){
+    // flex-basis: 24%;
+    // background-color: rgb(86, 86, 245);
+    border-right: 5px solid #ccc;
+}
+
+
+.unit-pages{
+    // background-color: red;
+}

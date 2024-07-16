@@ -47,3 +47,24 @@
 ```
 
 ![alt text](image.png)
+
+## flex 实现表格使每行都可以自适应高度
+```
+.box{
+    width: 25%;
+    word-wrap: break-word;
+    border-left: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    flex-basis: 25%;
+    padding: 5px;
+}
+.box-room{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+```

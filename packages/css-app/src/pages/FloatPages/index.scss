@@ -1,0 +1,23 @@
+
+
+
+  #tooltip {
+    color: #fff;
+    background: #363636;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+    position: absolute;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), 0 3px 3px rgba(0, 0, 0, 0.05);
+    width:300px;
+  }
+  button {
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px 15px;
+    color: #fff;
+    background: rgb(48, 19, 129);
+  }

@@ -254,30 +254,117 @@ type PartialPerson = Partial<Person>
 
 ## 常用类型
 
-### Record
-
-`构造一个具有类型T的一组属性K的类型` Construct a type with a set of properties K of type T
-
+示例
 ```
-type Pick<T, K extends keyof T> = {
-    [P in K]: T[P];
-};
-```
-
-### Pick
-
-`从T中，选择一组键在并集K中的属性` From T, pick a set of properties whose keys are in the union K
-
-```
-type Record<K extends keyof any, T> = {
-    [P in K]: T;
-};
+interface Person {  
+    name: string;  
+    age: number;  
+    address: string;  
+}  
 ```
 
-### Omit
-
-`构造一个性质为T的类型，但类型K中的性质除外。` Construct a type with the properties of T except for those in type K.
-
+### Omit<T,K>
+Omit`<T, K>` 用于从类型 T 中剔除一个或多个属性 K，从而生成一个新的类型。
 ```
-type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+type PersonWithoutAddress = Omit<Person, 'address'>;  
+// 相当于：  
+// type PersonWithoutAddress = {  
+//     name: string;  
+//     age: number;  
+// }
+```
+
+### Pick<T, K>
+与 Omit 相反，Pick`<T, K>` 用于从类型 T 中选择出一个或多个属性 K，从而形成一个新的类型。
+```
+type PersonDetails = Pick<Person, 'name' | 'address'>;  
+// 相当于：  
+// type PersonDetails = {  
+//     name: string;  
+//     address: string;  
+// }
+```
+
+### Partial<T>
+Partial`<T>` 将类型 T 中的所有属性都变为可选的。这对于创建具有可选字段的对象非常有用。
+```
+type PartialPerson = Partial<Person>;  
+// 相当于：  
+// type PartialPerson = {  
+//     name?: string;  
+//     age?: number;  
+//     address?: string;  
+// }
+```
+
+###  Readonly<T>
+Readonly`<T>` 将类型 T 中的所有属性都设置为只读。这意味着这些属性的值在对象被创建后不能被重新赋值。
+```
+type ReadonlyPerson = Readonly<Person>;  
+// 相当于：  
+// type ReadonlyPerson = {  
+//     readonly name: string;  
+//     readonly age: number;  
+//     readonly address: string;  
+// }
+```
+
+### Record<K, T>
+`Record<K, T>` 构造了一个对象类型，该对象的属性键是 K 类型，属性值是 T 类型。这对于创建字典或映射类型非常有用。
+```
+type StringToNumber = Record<string, number>;  
+// 相当于：  
+// type StringToNumber = {  
+//     [key: string]: number;  
+// }
+```
+
+### Required<T>
+`Required<T>` 将类型 T 中的所有属性都变为必需的。这与 Partial<T> 相反，后者将所有属性都变为可选的。
+```
+type RequiredPerson = Required<PartialPerson>;  
+// 相当于：  
+// type RequiredPerson = {  
+//     name: string;  
+//     age: number;  
+//     address: string;  
+// }
+```
+
+### Exclude<T, U>
+`Exclude<T, U>` 从类型 T 中排除掉可以赋值给类型 U 的所有属性，然后返回剩余的属性类型。
+```
+type T0 = Exclude<"a" | "b" | "c", "a">;  
+// 类型为 "b" | "c"
+```
+
+### Extract<T, U>
+与 Exclude 相反，`Extract<T, U>` 从类型 T 中提取出可以赋值给类型 U 的所有属性，然后返回这些属性的类型。
+```
+type T0 = Extract<"a" | "b" | "c", "a" | "f">;  
+// 类型为 "a"
+```
+
+### NonNullable<T>
+`NonNullable<T>` 从类型 T 中排除 null 和 undefined。
+```
+type T0 = NonNullable<string | null | undefined>;  
+// 类型为 string
+```
+
+### Parameters<T>
+`Parameters<T>` 构造一个元组类型，表示函数类型 T 的参数类型。
+```
+function f(x: number, y: string): boolean {  
+    return x + y.length > 5;  
+}  
+  
+type ParamsOfF = Parameters<typeof f>;  
+// 相当于：  
+// type ParamsOfF = [number, string]  
+  
+// 使用 ParamsOfF  
+const [firstParam, secondParam] = [1, "hello"] as ParamsOfF;  
+console.log(firstParam); // 输出: 1  
+console.log(secondParam); // 输出: "hello"
 ```

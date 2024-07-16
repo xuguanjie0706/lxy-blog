@@ -125,6 +125,10 @@ export default defineConfig({
               link: '/Javascript/CommonAPIs/IntersectionObserver',
             },
             {
+              text: 'MutationObserver',
+              link: '/Javascript/CommonAPIs/MutationObserver',
+            },
+            {
               text: 'getComputedStyle',
               link: '/Javascript/CommonAPIs/getComputedStyle',
             },

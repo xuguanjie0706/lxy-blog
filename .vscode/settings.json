@@ -2,5 +2,5 @@
   "files.exclude": {
     "**/.git": false
   },
-  "files.autoSave": "afterDelay"
+  // "files.autoSave": "afterDelay"
 }

@@ -1,0 +1,43 @@
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #001C30;
+}
+.ripple-btn {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    /* 按钮背景颜色 */
+    background-color: #007bff; 
+    color: #fff;
+    padding: 30px 40px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    /* 波纹颜色 */
+    background-color: rgba(194, 26, 26, 0.4);
+    pointer-events: none;
+    animation: ripple-animation 0.6s linear forwards;
+    transform-origin: center center;
+    box-shadow: none;
+}
+
+@keyframes ripple-animation {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(10);
+        opacity: 0;
+    }
+}
