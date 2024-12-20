@@ -24,7 +24,8 @@ Sass也支持for循环，有两种语法。
 
 ::: code-group
 
-```@for $index from 开始值 through 结束值 [包含结束值]
+```less
+@for $index from 开始值 through 结束值 [包含结束值]
 @for $i from 1 through 5 {
 	.col-#{$i} {
 		width: 50px * $i;
@@ -32,7 +33,8 @@ Sass也支持for循环，有两种语法。
 }
 ```
 
-```@for $index from 开始值 to 结束值 [不包含结束值]
+```less
+//@for $index from 开始值 to 结束值 [不包含结束值]
 @for $i from 1 to 5 {
 	.col-#{$i} {
 		width: 50px * $i;

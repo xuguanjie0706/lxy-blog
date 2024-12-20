@@ -34,7 +34,7 @@ pnpm run docs:dev
 
 ## 开启搜索
 
-```config.js
+```js [config.js]
 themeConfig{
     ...
     search: {

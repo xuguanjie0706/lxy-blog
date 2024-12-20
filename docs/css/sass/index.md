@@ -6,7 +6,7 @@
 
 变量嵌套在字符串中，则需要写在 #{} 符号里面，
 
-```变量声明
+```less [变量声明]
 $color:#333;  // 全局变量
 $color:#222 !default; // 全局默认变量 优先级最低
 a{
@@ -71,7 +71,7 @@ mixin相当于已经定义好了一类样式，可以在任何地方重复的使
 
 ::: code-group
 
-```含参数
+```less [包含参数]
 // 定义一个mixin
 @mixin name ($width,$heigth) {
 	color:red;
@@ -90,16 +90,16 @@ div{
 }
 ```
 
-```不含参数
+```less [不含参数]
 // 定义一个mixin
 @mixin name {
-	color:red;
+  color: red;
 }
 
 // 使用
-a{
-    @include name;
-    font-size:10px
+a {
+  @include name;
+  font-size: 10px;
 }
 ```
 

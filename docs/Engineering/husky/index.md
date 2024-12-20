@@ -52,7 +52,9 @@ npx husky-init //初始化
 
 ### pre-commit
 
-```pre-commit
+pre-commit
+
+```shell
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
@@ -65,7 +67,9 @@ pnpm lint-staged
 pnpm i eslint-plugin-prettier eslint-config-prettier
 ```
 
-```eslint.config.js
+eslint.config.js
+
+```shell
 extends: [
   ...
   'plugin:prettier/recommended',
@@ -74,7 +78,7 @@ extends: [
 
 ### package.json
 
-```package.json
+```
 "lint-staged": {
     "package.json": [
       "pnpm format"
@@ -93,9 +97,9 @@ extends: [
 pnpm  i  commitizen cz-git -D
 ```
 
-::: details 展开查看 ` .commitlintrc.js`完整配置模版
+::: details 展开查看 ` .commitlintrc.js`完整配置模版 .commitlintrc.js
 
-```.commitlintrc.js
+```javascript
 module.exports = {
   rules: {
     // @see: https://commitlint.js.org/#/reference-rules
@@ -112,20 +116,60 @@ module.exports = {
       footerPrefixesSelect: '选择关联issue前缀（可选）:',
       customFooterPrefix: '输入自定义issue前缀 :',
       footer: '列举关联issue (可选) 例如: #31, #I3244 :\n',
-      confirmCommit: '是否提交或修改commit ?'
+      confirmCommit: '是否提交或修改commit ?',
     },
     types: [
-      { value: 'feat', name: 'feat:     新增功能 | A new feature',emoji: ':sparkles:' },
-      { value: 'fix', name: 'fix:      修复缺陷 | A bug fix' ,emoji: ':bug:'},
-      { value: 'docs', name: 'docs:     文档更新 | Documentation only changes' , emoji: ':memo:'},
-      { value: 'style', name: 'style:    代码格式 | Changes that do not affect the meaning of the code', emoji: ':lipstick:' },
-      { value: 'refactor', name: 'refactor: 代码重构 | A code change that neither fixes a bug nor adds a feature',emoji: ':recycle:' },
-      { value: 'perf', name: 'perf:     性能提升 | A code change that improves performance',emoji: ':zap:' },
-      { value: 'test', name: 'test:     测试相关 | Adding missing tests or correcting existing tests',emoji: ':white_check_mark:' },
-      { value: 'build', name: 'build:    构建相关 | Changes that affect the build system or external dependencies' ,emoji: ':package:' },
-      { value: 'ci', name: 'ci:       持续集成 | Changes to our CI configuration files and scripts',emoji: ':ferris_wheel:' },
-      { value: 'revert', name: 'revert:   回退代码 | Revert to a commit',emoji: ':hammer:' },
-      { value: 'chore', name: 'chore:    其他修改 | Other changes that do not modify src or test files', emoji: ':rewind:' },
+      {
+        value: 'feat',
+        name: 'feat:     新增功能 | A new feature',
+        emoji: ':sparkles:',
+      },
+      { value: 'fix', name: 'fix:      修复缺陷 | A bug fix', emoji: ':bug:' },
+      {
+        value: 'docs',
+        name: 'docs:     文档更新 | Documentation only changes',
+        emoji: ':memo:',
+      },
+      {
+        value: 'style',
+        name: 'style:    代码格式 | Changes that do not affect the meaning of the code',
+        emoji: ':lipstick:',
+      },
+      {
+        value: 'refactor',
+        name: 'refactor: 代码重构 | A code change that neither fixes a bug nor adds a feature',
+        emoji: ':recycle:',
+      },
+      {
+        value: 'perf',
+        name: 'perf:     性能提升 | A code change that improves performance',
+        emoji: ':zap:',
+      },
+      {
+        value: 'test',
+        name: 'test:     测试相关 | Adding missing tests or correcting existing tests',
+        emoji: ':white_check_mark:',
+      },
+      {
+        value: 'build',
+        name: 'build:    构建相关 | Changes that affect the build system or external dependencies',
+        emoji: ':package:',
+      },
+      {
+        value: 'ci',
+        name: 'ci:       持续集成 | Changes to our CI configuration files and scripts',
+        emoji: ':ferris_wheel:',
+      },
+      {
+        value: 'revert',
+        name: 'revert:   回退代码 | Revert to a commit',
+        emoji: ':hammer:',
+      },
+      {
+        value: 'chore',
+        name: 'chore:    其他修改 | Other changes that do not modify src or test files',
+        emoji: ':rewind:',
+      },
     ],
     useEmoji: true,
     emojiAlign: 'center',
@@ -147,7 +191,7 @@ module.exports = {
     issuePrefixes: [
       // 如果使用 gitee 作为开发管理
       { value: 'link', name: 'link:     链接 ISSUES 进行中' },
-      { value: 'closed', name: 'closed:   标记 ISSUES 已完成' }
+      { value: 'closed', name: 'closed:   标记 ISSUES 已完成' },
     ],
     customIssuePrefixAlign: 'top',
     emptyIssuePrefixAlias: 'skip',
@@ -159,14 +203,14 @@ module.exports = {
     defaultBody: '',
     defaultIssues: '',
     defaultScope: '',
-    defaultSubject: ''
-  }
-}
+    defaultSubject: '',
+  },
+};
 ```
 
-:::
+::: package.json
 
-```package.json
+```json
  "script":{
   ...
   "commit": "git-cz",
@@ -184,11 +228,15 @@ module.exports = {
 pnpm i @commitlint/config-conventional  @commitlint/cli -D
 ```
 
-```.commitlintrc.js
+.commitlintrc.js
+
+```javascript
 extends: ['@commitlint/config-conventional'],
 ```
 
-```.husky/commit-msg
+.husky/commit-msg
+
+```shell
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
@@ -217,7 +265,9 @@ exit
 pnpm i standard-version -D
 ```
 
-```package.json
+package.json
+
+```json
  "script":{
   ...
   "release": "standard-version",

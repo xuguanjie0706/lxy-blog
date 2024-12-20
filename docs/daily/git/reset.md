@@ -40,22 +40,28 @@ git revert <commit-hash1>^..<commit-hash2>
 
 git reset 用于移动 HEAD 指针并可选地更改暂存区和工作目录的状态。它是一个非常强大的工具，常用于撤销提交、取消暂存文件、修改提交内容等操作。
 
-::: code-group
+::: code-group撤销提交，保留修改
 
-```撤销提交，保留修改
+```shell
 git reset --soft HEAD～1
 
 ```
 
-```撤销提交，取消暂存的文件
+撤销提交，取消暂存的文件
+
+```shell
 git reset HEAD～1
 ```
 
-```撤销提交，丢弃修改
+撤销提交，丢弃修改
+
+```shell
 git reset --hard HEAD~1
 ```
 
-```将 HEAD 指针移动到指定的提交
+将 HEAD 指针移动到指定的提交
+
+```shell
 git reset --hard <commit-hash>
 ```
 

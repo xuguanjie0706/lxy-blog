@@ -9,7 +9,9 @@ pnpm test
 
 ![alt text](image.png) 不巧的是,警告了。没关系更新`package.json`
 
-```package.json
+package.json
+
+```
 "@testing-library/react": "^15.0.6",
 ```
 
@@ -29,7 +31,7 @@ pnpm test
 pnpm add antd
 ```
 
-```app.ts
+```[app.ts]
 import "./App.css";
 import { Button, message } from "antd";
 import { useCallback } from "react";
@@ -51,7 +53,7 @@ function App() {
 export default App;
 ```
 
-```App.test.tsx
+```[App.test.tsx]
 test('renders learn react link', () => {
   render(<App />);
   const linkElement = screen.getByText("按 钮");

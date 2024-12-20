@@ -8,26 +8,34 @@
 
 ### git branch
 
-::: code-group
+::: code-group查看分支
 
-```查看分支
+```
 git branch
 ```
 
-```创建分支
+创建分支
+
+```shell
 git branch <branch>
 ```
 
-```删除分支
+删除分支
+
+```shell
  git branch -d <branch>
  git branch -D <branch>
 ```
 
-```查看分支的最后一次提交
+查看分支的最后一次提交
+
+```shell
  git branch -v
 ```
 
-```查看合并或者未合并的分支
+查看合并或者未合并的分支
+
+```
  git branch --merged
  git branch --no-merged
 ```
@@ -36,13 +44,15 @@ git branch <branch>
 
 ### git checkout
 
-::: code-group
+::: code-group切换分支
 
-```切换分支
+```
 git checkout <branch>
 ```
 
-```根据某个分支新建分支
+根据某个分支新建分支
+
+```
 git checkout -b <branch> <remote>/<branch>
 ```
 
@@ -50,13 +60,15 @@ git checkout -b <branch> <remote>/<branch>
 
 ### git commit
 
-::: code-group
+::: code-group输入备注
 
-```输入备注
+```shell
 git commit -m <message>
 ```
 
-```撤销操作
+撤销操作
+
+```shell
 // 最终你只会有一个提交——第二次提交将代替第一次提交的结果。
 git commit --amend
 git commit --amend --no-edit
@@ -66,9 +78,9 @@ git commit --amend --no-edit
 
 ### git push
 
-::: code-group
+::: code-group拉取代码
 
-```拉取代码
+```shell
 git push
 ```
 
@@ -76,13 +88,15 @@ git push
 
 ### git pull
 
-::: code-group
+::: code-group删除远程分支
 
-```删除远程分支
+```shell
 git push origin --delete <branch>
 ```
 
-```拉取代码
+拉取代码
+
+```shell
 git pull
 ```
 
@@ -90,13 +104,15 @@ git pull
 
 ### git log
 
-::: code-group
+::: code-group查看提交记录
 
-```查看提交记录
+```shell
 git log --graph --pretty=oneline --abbrev-commit
 ```
 
-```查看提交图
+查看提交图
+
+```shell
 git log --graph --pretty=oneline --abbrev-commit
 ```
 

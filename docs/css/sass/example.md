@@ -119,7 +119,7 @@ BEM 是 Block（块） Element（元素） Modifier（修饰器）的简称。�
 
 大概意思如果命中特殊规则，在根目录下创建，没有则在父元素下创建
 
-```
+```less
 @mixin e($element) {
   $E: $element !global;    // 注册一个全局变量
   $selector: &;
@@ -151,20 +151,20 @@ BEM 是 Block（块） Element（元素） Modifier（修饰器）的简称。�
 }
 ```
 
-```例子
-.a{
-    span{
-        @include b(alert){
-            color:red;
-            @include m(content) {
-                display: table-cell;
-                padding: 0 8px;
-                @include e(info) {
-                    padding: 0 10px;
-                }
-            }
+```less
+.a {
+  span {
+    @include b(alert) {
+      color: red;
+      @include m(content) {
+        display: table-cell;
+        padding: 0 8px;
+        @include e(info) {
+          padding: 0 10px;
         }
+      }
     }
+  }
 }
 //生成
 .a span .lxy-alert--content .lxy-alert__info {

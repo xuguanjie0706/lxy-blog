@@ -6,14 +6,12 @@
 pnpm i -D vite-plugin-windicss windicss
 ```
 
-```vite.config.ts
-import WindiCSS from 'vite-plugin-windicss'
+```ts [vite.config.ts]
+import WindiCSS from 'vite-plugin-windicss';
 
 export default {
-  plugins: [
-    WindiCSS(),
-  ],
-}
+  plugins: [WindiCSS()],
+};
 ```
 
 就是这样！开始在你的应用程序中使用类实用程序或CSS指令，享受速度！
@@ -25,38 +23,38 @@ export default {
 - tailwind.config.ts
 - tailwind.config.js
 
-```windi.config.ts
-import { defineConfig } from 'windicss/helpers'
+```ts [windi.config.ts]
+import { defineConfig } from 'windicss/helpers';
 
 export default defineConfig({
   /* configurations... */
-})
+});
 ```
 
-```windi.config.js
-import { defineConfig } from 'windicss/helpers'
+```js [windi.config.js]
+import { defineConfig } from 'windicss/helpers';
 
 export default defineConfig({
   /* configurations... */
-})
+});
 ```
 
 ::: details 事例
 
-```
-import { defineConfig } from 'windicss/helpers'
-import colors from 'windicss/colors'
-import plugin from 'windicss/plugin'
+```js [windi.config.js]
+import { defineConfig } from 'windicss/helpers';
+import colors from 'windicss/colors';
+import plugin from 'windicss/plugin';
 
 export default defineConfig({
   darkMode: 'class', // or 'media'
   theme: {
     extend: {
       screens: {
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1536px',
       },
       colors: {
@@ -86,8 +84,8 @@ export default defineConfig({
         '.skew-15deg': {
           transform: 'skewY(-15deg)',
         },
-      }
-      addUtilities(newUtilities)
+      };
+      addUtilities(newUtilities);
     }),
     plugin(({ addComponents }) => {
       const buttons = {
@@ -97,29 +95,33 @@ export default defineConfig({
           fontWeight: '600',
         },
         '.btn-blue': {
-          'backgroundColor': '#3490dc',
-          'color': '#fff',
+          backgroundColor: '#3490dc',
+          color: '#fff',
           '&:hover': {
             backgroundColor: '#2779bd',
           },
         },
         '.btn-red': {
-          'backgroundColor': '#e3342f',
-          'color': '#fff',
+          backgroundColor: '#e3342f',
+          color: '#fff',
           '&:hover': {
             backgroundColor: '#cc1f1a',
           },
         },
-      }
-      addComponents(buttons)
+      };
+      addComponents(buttons);
     }),
     plugin(({ addDynamic, variants }) => {
-      addDynamic('skew', ({ Utility, Style }) => {
-        return Utility.handler
-          .handleStatic(Style('skew'))
-          .handleNumber(0, 360, 'int', number => `skewY(-${number}deg)`)
-          .createProperty('transform')
-      }, variants('skew'))
+      addDynamic(
+        'skew',
+        ({ Utility, Style }) => {
+          return Utility.handler
+            .handleStatic(Style('skew'))
+            .handleNumber(0, 360, 'int', (number) => `skewY(-${number}deg)`)
+            .createProperty('transform');
+        },
+        variants('skew'),
+      );
     }),
     require('windicss/plugin/filters'),
     require('windicss/plugin/forms'),
@@ -129,7 +131,7 @@ export default defineConfig({
       modifiers: ['DEFAULT', 'sm', 'lg', 'red'],
     }),
   ],
-})
+});
 ```
 
 :::
@@ -138,27 +140,21 @@ export default defineConfig({
 
 如果您想启用/禁用其他文件类型或位置的扫描，您可以使用include和exclude选项进行配置
 
-```
-import { defineConfig } from 'windicss/helpers'
+```ts
+import { defineConfig } from 'windicss/helpers';
 
 export default defineConfig({
   extract: {
     // accepts globs and file paths relative to project root
-    include: [
-      'index.html',
-      'src/**/*.{vue,html,jsx,tsx}',
-    ],
-    exclude: [
-      'node_modules/**/*',
-      '.git/**/*',
-    ],
+    include: ['index.html', 'src/**/*.{vue,html,jsx,tsx}'],
+    exclude: ['node_modules/**/*', '.git/**/*'],
   },
-})
+});
 ```
 
 ## 值自动判断
 
-```index.vue
+```tsx [index.vue]
 <div class="p-5px mt-[0.3px]"></div>
 <button class="bg-hex-b2a8bb"></button>
 <button class="bg-[#b2a8bb]"></button>
@@ -213,7 +209,7 @@ grid-cols-[auto,1fr,30px]
 
 ## 快捷方式
 
-```windi.config.js
+```js [windi.config.js]
 export default {
   ...
   shortcuts: {
@@ -223,7 +219,7 @@ export default {
 }
 ```
 
-```index.vue
+```tsx [index.vue]
 <div class="btn btn-green">12</div>
 ```
 
@@ -243,8 +239,8 @@ p-1 lg:(p-2 m-2 text-red-400)
 
 ### 定制化
 
-```windi.config.js
-import { defineConfig } from 'windicss/helpers'
+```js [windi.config.js]
+import { defineConfig } from 'windicss/helpers';
 
 export default defineConfig({
   theme: {
@@ -254,7 +250,7 @@ export default defineConfig({
       desktop: '1280px',
     },
   },
-})
+});
 ```
 
 ## 深色模式
@@ -365,11 +361,11 @@ export default {
 
 ## 开启属性
 
-```windi.config.ts
+```ts [windi.config.ts]
 attributify: true,
 ```
 
-```index.vue
+```tsx [index.vue]
 <div :w="10px"></div>
 ```
 
@@ -381,20 +377,20 @@ attributify: true,
 
 ### 增加前缀
 
-```windi.config.ts
+```ts [windi.config.ts]
 attributify: {
     prefix:"x"
 },
 ```
 
-```index.vue
+```tsx [index.vue]
 <div
-x:bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
-x:w="10px"
-x:text="sm white"
-x:font="mono light"
-x:border="2 rounded blue-200"
-x:p="y-2 x-4"
+  x:bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
+  x:w="10px"
+  x:text="sm white"
+  x:font="mono light"
+  x:border="2 rounded blue-200"
+  x:p="y-2 x-4"
 ></div>
 ```
 
@@ -404,7 +400,7 @@ x:p="y-2 x-4"
 pnpm i windicss-analysis
 ```
 
-```package.json
+```json [package.json]
 {
   "scripts": {
     "analysis": "windicss-analysis"

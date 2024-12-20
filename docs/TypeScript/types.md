@@ -127,15 +127,17 @@ foo = ['hello world',1] // 错误
 
 ::: code-group
 
-```一个返回自身类型的函数 [bad Case]
-function identity(arg:number):number{
-  return arg
+```ts [bad Case]
+//一个返回自身类型的函数
+function identity(arg: number): number {
+  return arg;
 }
 ```
 
-```使用泛型返回自身类型的函数 [Good Case]
-function identity<T>(arg:T):T{
-  return arg
+```ts [Good Case]
+//使用泛型返回自身类型的函数
+function identity<T>(arg: T): T {
+  return arg;
 }
 ```
 

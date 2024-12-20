@@ -18,34 +18,33 @@ tsc index.ts
 
 ::: code-group
 
-```index.ts [TypeScript]
+```ts [TypeScript]
 type Goods = {
-    name:string
-    price:number
-}
+  name: string;
+  price: number;
+};
 
-const buy = (goods:Goods):void=>{
-    console.log(`spend ${goods.price} to buy ${goods.name}`)
-}
+const buy = (goods: Goods): void => {
+  console.log(`spend ${goods.price} to buy ${goods.name}`);
+};
 
-const water :Goods={
-    name:"water",
-    price:1
-}
+const water: Goods = {
+  name: 'water',
+  price: 1,
+};
 
-buy(water)
+buy(water);
 ```
 
-```index.js [JavaScript]
+```js [JavaScript]
 var buy = function (goods) {
-    console.log("spend ".concat(goods.price, " to buy ").concat(goods.name));
+  console.log('spend '.concat(goods.price, ' to buy ').concat(goods.name));
 };
 var water = {
-    name: "water",
-    price: 1
+  name: 'water',
+  price: 1,
 };
 buy(water);
-
 ```
 
 :::

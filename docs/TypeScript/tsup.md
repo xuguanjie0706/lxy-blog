@@ -40,12 +40,14 @@ tsup src/index.ts --watch
 tsup src/index.ts --minify
 ```
 
-```package.josn
+package.josn
+
+```json
 {
-    "dev": "pnpm run build --watch --ignore-watch examples",
-    "build": "tsup src/index.ts --dts --format cjs,esm",
-    "example:react": "cd examples/vite-react && pnpm run build",
-    "example:vue2": "cd examples/vite-vue2 && pnpm run build",
-    "example:vue3": "cd examples/vite-vue3 && pnpm run build"
+  "dev": "pnpm run build --watch --ignore-watch examples",
+  "build": "tsup src/index.ts --dts --format cjs,esm",
+  "example:react": "cd examples/vite-react && pnpm run build",
+  "example:vue2": "cd examples/vite-vue2 && pnpm run build",
+  "example:vue3": "cd examples/vite-vue3 && pnpm run build"
 }
 ```

@@ -29,24 +29,23 @@ function insertSort(arr){
 
 # 插入排序
 
-```插入排序
-function insertSort(arr){
-    let n = arr.length
-    if(n<1){
-        return
+```js
+function insertSort(arr) {
+  let n = arr.length;
+  if (n < 1) {
+    return;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    let temp = arr[i];
+    let j = i - 1;
+    for (; j > 0; j--) {
+      if (arr[j] > temp) {
+        arr[j + 1] = arr[j];
+      } else {
+        break;
+      }
     }
-    for (let i =0;i<arr.length;i++){
-        let temp = arr[i]
-        let j = i-1
-        for(;j>0;j--){
-            if(arr[j]>temp){
-                arr[j+1]=arr[j]
-            }else{
-                break
-            }
-        }
-        a[j+1] = temp
-    }
-
+    a[j + 1] = temp;
+  }
 }
 ```

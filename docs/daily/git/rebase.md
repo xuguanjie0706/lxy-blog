@@ -4,13 +4,15 @@
 
 是将两个分支的历史记录合并为一个新的合并提交。它会保留分支的分叉结构，并创建一个新的合并提交，将两个分支的更改整合在一起。
 
-推荐使用第一种方式 --no-ff 参数可以禁用这种 fast-forward 合并方式。可以保留历史分支。::: code-group
+推荐使用第一种方式 --no-ff 参数可以禁用这种 fast-forward 合并方式。可以保留历史分支。::: code-group 合并代码
 
-```合并代码
+```shell
 git merge <branch-name> --no-ff
 ```
 
-```合并代码 fast-forward
+合并代码 fast-forward
+
+```shell
 git merge <branch-name>
 ```
 
@@ -26,9 +28,9 @@ git merge --abort
 
 git rebase 是重新设置分支的基点，并将当前分支的提交逐个应用到目标分支上。它会创建更整洁、更线性的提交历史。
 
-::: code-group
+::: code-group合并多个提交
 
-```合并多个提交
+```shell
 git rebase -i HEAD~1
 ```
 
@@ -54,6 +56,6 @@ git rebase -i HEAD~1
 
 ### 中止rebase
 
-```
+```shell
 git rebase --abort
 ```

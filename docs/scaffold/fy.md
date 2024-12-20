@@ -5,25 +5,25 @@ pnpm init
 pnpm i axios md5  minimist zx
 ```
 
-```index.js
+```js
 #!/usr/bin/env node
 
-import { chalk  } from 'zx';
-import minimist from 'minimist'
-import fy from "./fy.js"
+import { chalk } from 'zx';
+import minimist from 'minimist';
+import fy from './fy.js';
 
-const args =  minimist(process.argv.slice(2));
+const args = minimist(process.argv.slice(2));
 
-const {l:type, _:query}= args
+const { l: type, _: query } = args;
 try {
-    const data = await fy(query.join(" "),type)
-    console.log(chalk.green(data))
+  const data = await fy(query.join(' '), type);
+  console.log(chalk.green(data));
 } catch (error) {
-    console.log(chalk.blue(error))
+  console.log(chalk.blue(error));
 }
 ```
 
-```fy.js
+```js
 import axios from 'axios';
 import md5 from 'md5';
 import config from '../config.json' assert { type: 'json' };
@@ -61,5 +61,4 @@ async function fy(keywords, type = 'zh') {
 }
 
 export default fy;
-
 ```
