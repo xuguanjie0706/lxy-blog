@@ -2,8 +2,8 @@
 
 ## 1. 打好基础
 
-- [首先深入学习TypeScript的基本类型系统](./types.md)
-- [理解interface和type的区别和使用场景](./理解interface和type的区别和使用场景.md)
+- [首先深入学习TypeScript的基本类型系统]
+- [理解interface和type的区别和使用场景]
 - 掌握泛型(Generics)的基本概念
 
 ## 2.实践项目
