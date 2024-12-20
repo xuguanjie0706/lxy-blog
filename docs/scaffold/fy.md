@@ -1,6 +1,6 @@
 # 快速实现一个翻译的脚手架
 
-```
+```shell
 pnpm init
 pnpm i axios md5  minimist zx
 ```
