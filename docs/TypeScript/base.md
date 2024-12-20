@@ -33,6 +33,7 @@ const water: Goods = {
   price: 1,
 };
 
+
 buy(water);
 ```
 
