@@ -59,6 +59,7 @@ git commit -m <message>
 ```撤销操作
 // 最终你只会有一个提交——第二次提交将代替第一次提交的结果。
 git commit --amend
+git commit --amend --no-edit
 ```
 
 :::

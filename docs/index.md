@@ -6,7 +6,7 @@ title: LXY
 titleTemplate: 一个为小李写的博客
 
 hero:
-  name: 小李的吗喽
+  name: XiaoLi的博客
   text: 搬砖中找寻真正的价值
   tagline: 就这样，我度过了七年的时光，回首望去，发现自己仿佛一直在原地踏步，没有真正搬起什么有价值的“砖”
   image:

@@ -143,11 +143,11 @@ function identity<T>(arg:T):T{
 
 泛型类型
 
-```
-type Person<T>={
-  name:string,
-  skill: T
-}
+```ts
+type Person<T> = {
+  name: string;
+  skill: T;
+};
 ```
 
 ## 高级类型
@@ -158,96 +158,96 @@ TypeScript 除了拥有基础类型，还有很多复杂的高级类型。高级
 
 对象类型的高级变种
 
-```
-interface Person{
-  name:string
-  age:number
+```ts
+interface Person {
+  name: string;
+  age: number;
 }
-const person:Person ={
-  name:"jack",
-  age:35
-}
+const person: Person = {
+  name: 'jack',
+  age: 35,
+};
 // keyof T,检索类型查询符，keyof T 的结果为属性名的联合
-type Keys = keyof Person // 'name' | 'age' , 结果根据Person动态生成
+type Keys = keyof Person; // 'name' | 'age' , 结果根据Person动态生成
 // T[K] ,索引反问操作符,返回对应类型的属性名类型
-type Name = Person['name'] // string 结果根据Person的name类型动态生成
+type Name = Person['name']; // string 结果根据Person的name类型动态生成
 // 综合索引类型查询符和索引访问操作符，pick函数会根据不同的入参，动态调整类型
 
-function Pick<T,K extends keyof T>(o:T,name:K):T[K]{
-  return o[name]
+function Pick<T, K extends keyof T>(o: T, name: K): T[K] {
+  return o[name];
 }
-const name:string = pick(person,'name')  //正确
-const age:string =  pick(person,'age')   //错误  person中age类型为number
-const foo:any = pick(person,"foo")       //错误  person中没有foo
+const name: string = pick(person, 'name'); //正确
+const age: string = pick(person, 'age'); //错误  person中age类型为number
+const foo: any = pick(person, 'foo'); //错误  person中没有foo
 ```
 
 ### Intersection Types(交叉类型)
 
 将多个类型合并成一个类型，用`&`来分隔每个类型。
 
-```
+```ts
 type Person = {
-  name:string
-  age:number
-}
-type Swim ={
-  swim:()=>void
-}
+  name: string;
+  age: number;
+};
+type Swim = {
+  swim: () => void;
+};
 
-type Swimer = Person & Swim
-// type Swimer ={
-  name:string
-  age:number
-  swim:()=>void
-}
+// type Swimer = Person & Swim
+type Swimer = {
+  name: string;
+  age: number;
+  swim: void;
+};
 ```
 
 ### Union Types(联合类型)
 
 表示一个值可以是几种类型之一，用`|`来分隔每个类型。
 
-```
+```ts
 type Hunter = {
-  name:string
-  hunter:()=>void
-}
+  name: string;
+  hunter: () => void;
+};
 
-type Spinners ={
-  name:string
-  spin:()=>void
-}
+type Spinners = {
+  name: string;
+  spin: void;
+};
 
 //假设有两种工人：猎人、纺织者
-type Workers =  Hunter | Spinners
+type Workers = Hunter | Spinners;
 
-const getWorker:() => Workers = ()=>({name:"bob",spin:()=>{}})
-const worker:Workers = getWorker()
-worker.name // 正确
-worker.spin // 错误，workder可能是猎人没有spin能力
+const getWorker: () => Workers = () => ({ name: 'bob', spin: () => {} });
+const worker: Workers = getWorker();
+worker.name; // 正确
+worker.spin; // 错误，workder可能是猎人没有spin能力
 ```
 
 ### Mappod Types(映射类型)
 
 通过转换旧类型中的每一个属性来创建新类型的方式
 
-```
+```ts
 //将所有属性变成只读
-type Readonly<T> ={
-  readonly [P in keyof T]:T[P]
-}
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+};
 
 //将所有属性变成可选
 type Partial<T> = {
-  [P in keyof T]?: T[P]
-}
+  [P in keyof T]?: T[P];
+};
 
-type Person={
-  name:string
-  age:number
-}
+type Person = {
+  name: string;
+  age: number;
+};
 
-type ReadonlyPerson = Readonly<Person>
-type PartialPerson = Partial<Person>
+type ReadonlyPerson = Readonly<Person>;
+type PartialPerson = Partial<Person>;
 ```
 
 除了以上这些高级类型，开源社区还有一个名为utility-types的TypeScript类型操作工作集
@@ -255,116 +255,137 @@ type PartialPerson = Partial<Person>
 ## 常用类型
 
 示例
-```
-interface Person {  
-    name: string;  
-    age: number;  
-    address: string;  
-}  
+
+```ts
+interface Person {
+  name: string;
+  age: number;
+  address: string;
+}
 ```
 
 ### Omit<T,K>
+
 Omit`<T, K>` 用于从类型 T 中剔除一个或多个属性 K，从而生成一个新的类型。
-```
-type PersonWithoutAddress = Omit<Person, 'address'>;  
-// 相当于：  
-// type PersonWithoutAddress = {  
-//     name: string;  
-//     age: number;  
+
+```ts
+type PersonWithoutAddress = Omit<Person, 'address'>;
+// 相当于：
+// type PersonWithoutAddress = {
+//     name: string;
+//     age: number;
 // }
 ```
 
 ### Pick<T, K>
+
 与 Omit 相反，Pick`<T, K>` 用于从类型 T 中选择出一个或多个属性 K，从而形成一个新的类型。
-```
-type PersonDetails = Pick<Person, 'name' | 'address'>;  
-// 相当于：  
-// type PersonDetails = {  
-//     name: string;  
-//     address: string;  
+
+```ts
+type PersonDetails = Pick<Person, 'name' | 'address'>;
+// 相当于：
+// type PersonDetails = {
+//     name: string;
+//     address: string;
 // }
 ```
 
 ### Partial<T>
+
 Partial`<T>` 将类型 T 中的所有属性都变为可选的。这对于创建具有可选字段的对象非常有用。
-```
-type PartialPerson = Partial<Person>;  
-// 相当于：  
-// type PartialPerson = {  
-//     name?: string;  
-//     age?: number;  
-//     address?: string;  
+
+```ts
+type PartialPerson = Partial<Person>;
+// 相当于：
+// type PartialPerson = {
+//     name?: string;
+//     age?: number;
+//     address?: string;
 // }
 ```
 
-###  Readonly<T>
+### Readonly<T>
+
 Readonly`<T>` 将类型 T 中的所有属性都设置为只读。这意味着这些属性的值在对象被创建后不能被重新赋值。
-```
-type ReadonlyPerson = Readonly<Person>;  
-// 相当于：  
-// type ReadonlyPerson = {  
-//     readonly name: string;  
-//     readonly age: number;  
-//     readonly address: string;  
+
+```ts
+type ReadonlyPerson = Readonly<Person>;
+// 相当于：
+// type ReadonlyPerson = {
+//     readonly name: string;
+//     readonly age: number;
+//     readonly address: string;
 // }
 ```
 
 ### Record<K, T>
+
 `Record<K, T>` 构造了一个对象类型，该对象的属性键是 K 类型，属性值是 T 类型。这对于创建字典或映射类型非常有用。
-```
-type StringToNumber = Record<string, number>;  
-// 相当于：  
-// type StringToNumber = {  
-//     [key: string]: number;  
+
+```ts
+type StringToNumber = Record<string, number>;
+// 相当于：
+// type StringToNumber = {
+//     [key: string]: number;
 // }
 ```
 
 ### Required<T>
+
 `Required<T>` 将类型 T 中的所有属性都变为必需的。这与 Partial<T> 相反，后者将所有属性都变为可选的。
-```
-type RequiredPerson = Required<PartialPerson>;  
-// 相当于：  
-// type RequiredPerson = {  
-//     name: string;  
-//     age: number;  
-//     address: string;  
+
+```ts
+type RequiredPerson = Required<PartialPerson>;
+// 相当于：
+// type RequiredPerson = {
+//     name: string;
+//     age: number;
+//     address: string;
 // }
 ```
 
 ### Exclude<T, U>
+
 `Exclude<T, U>` 从类型 T 中排除掉可以赋值给类型 U 的所有属性，然后返回剩余的属性类型。
-```
-type T0 = Exclude<"a" | "b" | "c", "a">;  
+
+```ts
+type T0 = Exclude<'a' | 'b' | 'c', 'a'>;
 // 类型为 "b" | "c"
 ```
 
 ### Extract<T, U>
+
 与 Exclude 相反，`Extract<T, U>` 从类型 T 中提取出可以赋值给类型 U 的所有属性，然后返回这些属性的类型。
-```
-type T0 = Extract<"a" | "b" | "c", "a" | "f">;  
+
+```ts
+type T0 = Extract<'a' | 'b' | 'c', 'a' | 'f'>;
 // 类型为 "a"
 ```
 
 ### NonNullable<T>
+
 `NonNullable<T>` 从类型 T 中排除 null 和 undefined。
-```
-type T0 = NonNullable<string | null | undefined>;  
+
+```ts
+type T0 = NonNullable<string | null | undefined>;
 // 类型为 string
 ```
 
 ### Parameters<T>
+
 `Parameters<T>` 构造一个元组类型，表示函数类型 T 的参数类型。
-```
-function f(x: number, y: string): boolean {  
-    return x + y.length > 5;  
-}  
-  
-type ParamsOfF = Parameters<typeof f>;  
-// 相当于：  
-// type ParamsOfF = [number, string]  
-  
-// 使用 ParamsOfF  
-const [firstParam, secondParam] = [1, "hello"] as ParamsOfF;  
-console.log(firstParam); // 输出: 1  
+
+```ts
+function f(x: number, y: string): boolean {
+  return x + y.length > 5;
+}
+
+type ParamsOfF = Parameters<typeof f>;
+// 相当于：
+// type ParamsOfF = [number, string]
+
+// 使用 ParamsOfF
+const [firstParam, secondParam] = [1, 'hello'] as ParamsOfF;
+console.log(firstParam); // 输出: 1
 console.log(secondParam); // 输出: "hello"
 ```

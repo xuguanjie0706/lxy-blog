@@ -49,6 +49,7 @@
 ![alt text](image.png)
 
 ## flex 实现表格使每行都可以自适应高度
+
 ```
 .box{
     width: 25%;
