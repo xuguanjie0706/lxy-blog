@@ -69,4 +69,4 @@
 ## 要插入行或块注释
 
 根据当前语言生成 |变量| 含义 |  
-|:--|--| |BLOCK_COMMENT_START |vue格式/_| |BLOCK_COMMENT_END |vue格式 _/| |LINE_COMMENT |vue格式 //|
+|:--|--| |BLOCK*COMMENT_START |vue格式/*| |BLOCK*COMMENT_END |vue格式 */| |LINE_COMMENT |vue格式 //|

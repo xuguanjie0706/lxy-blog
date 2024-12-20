@@ -3,7 +3,7 @@
 layout: home
 
 title: LXY
-titleTemplate: 一个为小李写的博客
+titleTemplate: 一个马楼的博客
 
 hero:
   name: XiaoLi的博客
